@@ -1,6 +1,7 @@
 package com.c823.consorcio.auth.config;
 
 import com.c823.consorcio.auth.filter.JwtRequestFilter;
+import com.c823.consorcio.auth.service.AuthEntryPointJwt;
 import com.c823.consorcio.auth.service.UserDetailsCustomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
