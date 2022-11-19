@@ -8,8 +8,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -49,7 +47,7 @@ public class UserEntity {
 
     @ManyToOne
     @JoinColumn(name = "role_id")
-    private RolEntity role;
+    private RoleEntity role;
 
     private boolean deleted = Boolean.FALSE;
 
