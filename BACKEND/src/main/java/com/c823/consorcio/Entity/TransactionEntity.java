@@ -49,5 +49,5 @@ public class TransactionEntity {
   @Column(name = "TRANSACTION_DATE")
   private Date transactionDate;
 
-  
+
 }
