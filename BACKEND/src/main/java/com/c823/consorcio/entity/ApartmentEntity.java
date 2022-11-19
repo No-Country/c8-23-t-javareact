@@ -15,15 +15,8 @@ public class ApartmentEntity {
     @Column(name = "APARTMENT_ID")
     private long apartmentId;
 
-    @Column(name = "STREET")
-    private String street;
-
-    @Column(name= "STREET_NUMBER")
-    private int streetNumber;
-
-    //apartment ej: 2C
     @Column(name = "APARTMENT_NUMBER")
-    private String apartment;
+    private Long apartmentNumber;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -32,9 +25,5 @@ public class ApartmentEntity {
     public ApartmentEntity() {
     }
 
-    public ApartmentEntity(String street, int streetNumber, String apartment) {
-        this.street = street;
-        this.streetNumber = streetNumber;
-        this.apartment = apartment;
-    }
+
 }
