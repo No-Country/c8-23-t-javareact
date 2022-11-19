@@ -14,22 +14,22 @@ public class UserProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
-    private String apellido;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String dpto;
-    private String domicilioCalle;
+    private String department;
+    private String street;
 
     public UserProfile() {
     }
 
-    public UserProfile(Long id, String nombre, String apellido, String email, String dpto, String domicilioCalle) {
+    public UserProfile(Long id, String firstName, String lastName, String email, String department, String street) {
         this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.dpto = dpto;
-        this.domicilioCalle = domicilioCalle;
+        this.department = department;
+        this.street = street;
     }
 
 }
