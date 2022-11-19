@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ROLES")
 public class RoleEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ROLE_ID")
@@ -22,14 +23,6 @@ public class RoleEntity {
     @Column(name = "ROLE_NAME",nullable = false,unique = true)
     private RoleName roleName;
 
-    @OneToMany(mappedBy = "role",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "role",fetch = FetchType.EAGER) //TODO: "ver cascade"
     private List<UserEntity> users = new ArrayList<>();
-
-    public RoleEntity() {
-    }
-
-    public RoleEntity(RoleName roleName){
-        this.roleName = roleName;
-    }
-
 }
