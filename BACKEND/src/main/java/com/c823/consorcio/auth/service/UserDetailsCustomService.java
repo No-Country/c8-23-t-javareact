@@ -25,7 +25,7 @@ public class UserDetailsCustomService implements UserDetailsService {
     if (iApartmentRepository.findByApartmentNumber(userDto.getApartmentNumber()) != null){
       throw new RepeatedUsername("Repeted Department Number");
     }
-    UserEntity entity = 
+    UserEntity entity =
 
     return null;
   }
