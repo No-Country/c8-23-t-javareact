@@ -1,4 +1,4 @@
-package com.c823.consorcio.Entity;
+package com.c823.consorcio.entity;
 
 
 import lombok.Getter;
@@ -22,8 +22,14 @@ public class ApartmentEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
+    @OneToOne
+    @JoinColumn(name = "account_id")
+    private AccountEntity account;
+
     public ApartmentEntity() {
     }
+
+
 
 
 }
