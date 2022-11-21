@@ -1,6 +1,8 @@
 package com.c823.consorcio.auth.service;
 
+
 import com.c823.consorcio.auth.dto.UserAuthDto;
+
 import com.c823.consorcio.entity.ApartmentEntity;
 import com.c823.consorcio.entity.RoleEntity;
 import com.c823.consorcio.entity.UserEntity;
@@ -43,10 +45,13 @@ public class UserDetailsCustomService implements UserDetailsService {
     }
     UserEntity entity = this.userMap.userAuthDto2Entity(userDto);
 
+
     RoleEntity role = this.iRoleRepository.findByRoleName(RoleName.USER);
+
     entity.setRole(role);
 
     UserEntity entitySaved = this.iUserRepository.save(entity);
+
 
 
     /*this.accountService.addAccount();
@@ -58,9 +63,6 @@ public class UserDetailsCustomService implements UserDetailsService {
 
     /*ApartmentEntity apartment = this.iApartmentRepository.findByApartmentNumber(
         userDto.getApartmentNumber());*/
-
-
-
 
 
 

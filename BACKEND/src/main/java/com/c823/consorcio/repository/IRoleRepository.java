@@ -12,5 +12,4 @@ public interface IRoleRepository extends JpaRepository<RoleEntity,Long> {
   RoleEntity findByRoleName(RoleName roleName);
 
 
-
 }

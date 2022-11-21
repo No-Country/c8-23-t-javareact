@@ -18,7 +18,6 @@ public class UserMap {
     userEntity.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
     userEntity.setCreationDate(userDto.getCreationDate());
 
-
     return userEntity;
 
   }

@@ -19,6 +19,7 @@ public class ApartmentEntity {
     @Column(name = "APARTMENT_NUMBER")
     private Long apartmentNumber;
 
+
     @Column(name = "FLOOR")
     private String floor;
 
