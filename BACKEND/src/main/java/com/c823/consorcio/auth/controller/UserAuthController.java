@@ -53,7 +53,7 @@ public class UserAuthController {
   }
 
 
-  /*@PostMapping("/login")
+  @PostMapping("/login")
   public ResponseEntity<AuthenticationResponse> signIn(
       @RequestBody AuthenticationRequest authenticationRequest) {
 
@@ -69,5 +69,5 @@ public class UserAuthController {
     return ResponseEntity.ok(new AuthenticationResponse(jwt));
   }
 
-  }*/
-}
+  }
+

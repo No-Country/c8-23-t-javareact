@@ -22,4 +22,15 @@ public class UserMap {
     return userEntity;
 
   }
+
+  public ResponseUserDto userAuthEntity2Dto(UserEntity entitySaved) {
+    ResponseUserDto dto = new ResponseUserDto();
+    dto.setId(entitySaved.getUserId());
+    dto.setFirstName(entitySaved.getFirstName());
+    dto.setLastName(entitySaved.getLastName());
+    dto.setEmail(entitySaved.getEmail());
+    dto.setCreationDate(entitySaved.getCreationDate());
+
+    return dto;
+  }
 }

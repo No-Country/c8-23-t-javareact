@@ -30,6 +30,8 @@ public class ApartmentEntity {
     @JoinColumn(name = "account_id")
     private AccountEntity account;
 
+
+
     public ApartmentEntity() {
     }
 }
