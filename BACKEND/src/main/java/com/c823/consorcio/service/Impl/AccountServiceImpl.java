@@ -20,7 +20,7 @@ public class AccountServiceImpl implements IAccountService {
   IaccountRepository iaccountRepository;
 
 
-  @Override
+  /*@Override
   public void addAccount(String email, ResponseUserDto userDto) {
     String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
     UserEntity user = this.userRepository.findByEmail(email);
@@ -30,6 +30,11 @@ public class AccountServiceImpl implements IAccountService {
     }
     AccountEntity account = createAccount();
     account.setApartment(userDto.getApartmentNumber());
+
+  }*/
+
+  @Override
+  public void addAccount(String email) {
 
   }
 }
