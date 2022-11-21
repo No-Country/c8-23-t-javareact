@@ -14,6 +14,7 @@ import com.c823.consorcio.repository.IApartmentRepository;
 import com.c823.consorcio.repository.IRoleRepository;
 import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.service.IAccountService;
+import com.c823.consorcio.service.IapartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -35,6 +36,8 @@ public class UserDetailsCustomService implements UserDetailsService {
   IAccountService accountService;
   @Autowired
   ApartmentMap apartmentMap;
+  @Autowired
+  IapartmentService iapartmentService;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -58,6 +61,7 @@ public class UserDetailsCustomService implements UserDetailsService {
     ApartmentEntity apartmentEntitySaved = this.iApartmentRepository.save(apartmentEntity);
 
     this.accountService.addAccount(apartmentEntitySaved.getApartmentId(),entitySaved.getEmail());
+    //this.iapartmentService
 
 
     ResponseUserDto responseUserDto = userMap.userAuthEntity2Dto(entitySaved);
