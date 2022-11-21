@@ -3,7 +3,9 @@ package com.c823.consorcio.auth.service;
 
 import com.c823.consorcio.auth.dto.UserAuthDto;
 
+
 import com.c823.consorcio.auth.exception.ParamNotFound;
+
 import com.c823.consorcio.entity.ApartmentEntity;
 import com.c823.consorcio.entity.RoleEntity;
 import com.c823.consorcio.entity.UserEntity;
@@ -62,6 +64,7 @@ public class UserDetailsCustomService implements UserDetailsService {
 
 
 
+
     ApartmentEntity apartmentEntity = this.apartmentMap.apartmentDTO2Entity(userDto);
     ApartmentEntity apartmentEntitySaved = this.iApartmentRepository.save(apartmentEntity);
 
@@ -77,13 +80,9 @@ public class UserDetailsCustomService implements UserDetailsService {
 
 
     return responseUserDto;
+    }
 
 
-
-
-
-
-  }
 
   public void saveAdmin(UserAuthDto user) {
   }

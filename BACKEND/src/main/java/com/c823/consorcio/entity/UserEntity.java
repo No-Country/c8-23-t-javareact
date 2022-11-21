@@ -52,13 +52,13 @@ public class UserEntity implements Serializable {
         apartments.add(apartment);
     }
 
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<AccountEntity> accounts = new ArrayList<>();
     //Metodo para que el usuario agregue cuentas
     public void addAccount(AccountEntity account){
         accounts.add(account);
     }
-
 
 
 

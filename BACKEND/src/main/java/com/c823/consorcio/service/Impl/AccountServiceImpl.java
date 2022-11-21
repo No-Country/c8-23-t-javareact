@@ -26,10 +26,9 @@ public class AccountServiceImpl implements IAccountService {
 
 
 
+
   @Override
   public String addAccount(Long apartmentId, String email) {
-
-
 
     String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
     UserEntity user = this.userRepository.findByEmail(email);
@@ -46,6 +45,13 @@ public class AccountServiceImpl implements IAccountService {
     this.userRepository.save(log);
     return HttpStatus.CREATED.getReasonPhrase();
 
+
+
+
+  }
+
+  @Override
+  public void addAccount(String email) {
 
 
   }
