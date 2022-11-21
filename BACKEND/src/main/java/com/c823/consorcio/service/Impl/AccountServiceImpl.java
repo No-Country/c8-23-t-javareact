@@ -25,13 +25,18 @@ public class AccountServiceImpl implements IAccountService {
   IApartmentRepository iApartmentRepository;
 
 
+
   @Override
   public String addAccount(Long apartmentId, String email) {
+
+
+
     String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
     UserEntity user = this.userRepository.findByEmail(email);
     List<AccountEntity> accounts = this.iaccountRepository.findAllByUser(user);
    /* if (user == null) {
       throw new ParamNotFound("ID invalid");
+
     }*/
     AccountEntity account = createAccount(apartmentId);
     UserEntity log = this.userRepository.findByEmail(email);
@@ -40,6 +45,8 @@ public class AccountServiceImpl implements IAccountService {
     log.addAccount(account);
     this.userRepository.save(log);
     return HttpStatus.CREATED.getReasonPhrase();
+
+
 
   }
 
