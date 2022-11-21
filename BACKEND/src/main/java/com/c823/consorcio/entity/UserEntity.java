@@ -41,21 +41,26 @@ public class UserEntity implements Serializable {
     @CreationTimestamp
     private Date creationDate;
 
-   /* @OneToMany(mappedBy = "user",
-    fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = {
+        CascadeType.DETACH,
+        CascadeType.MERGE,
+        CascadeType.REFRESH,
+        CascadeType.PERSIST}, fetch = FetchType.EAGER)
     private List<ApartmentEntity> apartments = new ArrayList<>();
     //Metodo para que el usuario agregue departamentos
     public void addApartment(ApartmentEntity apartment){
         apartments.add(apartment);
-    }*/
+    }
 
-    @OneToMany(mappedBy = "user",
-        fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<AccountEntity> accounts = new ArrayList<>();
     //Metodo para que el usuario agregue cuentas
     public void addAccount(AccountEntity account){
         accounts.add(account);
     }
+
+
+
 
 
     @ManyToOne

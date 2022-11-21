@@ -56,9 +56,13 @@ public class UserDetailsCustomService implements UserDetailsService {
 
     ApartmentEntity apartmentEntity = this.apartmentMap.apartmentDTO2Entity(userDto);
     ApartmentEntity apartmentEntitySaved = this.iApartmentRepository.save(apartmentEntity);
+
     this.accountService.addAccount(apartmentEntitySaved.getApartmentId(),entitySaved.getEmail());
 
+
     ResponseUserDto responseUserDto = userMap.userAuthEntity2Dto(entitySaved);
+
+
 
 
     return responseUserDto;
