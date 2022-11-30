@@ -1,12 +1,15 @@
 package com.c823.consorcio.controller;
 
 import com.c823.consorcio.dto.BillPaymentDto;
+import com.c823.consorcio.dto.TransactionBasicDto;
 import com.c823.consorcio.dto.TransactionDto;
 import com.c823.consorcio.service.ITransactionService;
 import com.c823.consorcio.service.Impl.TransactionServiceImpl;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +33,13 @@ public class TransactionController {
     TransactionDto result = transactionService.sendPayment(billPaymentDto);
     return ResponseEntity.status(HttpStatus.CREATED).body(result);
   }
+
+  @GetMapping("/transactions")
+  public ResponseEntity<List<TransactionBasicDto>> getTransaction(){
+    List<TransactionBasicDto> transactionList = transactionService.userBasicTransactions();
+    return ResponseEntity.ok().body(transactionList);
+  }
+
 
 
 
