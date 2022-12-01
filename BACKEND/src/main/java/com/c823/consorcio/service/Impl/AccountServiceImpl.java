@@ -1,5 +1,6 @@
 package com.c823.consorcio.service.Impl;
 
+import com.c823.consorcio.dto.AccountDto;
 import com.c823.consorcio.entity.AccountEntity;
 
 import com.c823.consorcio.entity.ApartmentEntity;
@@ -8,6 +9,7 @@ import com.c823.consorcio.entity.UserEntity;
 import com.c823.consorcio.auth.dto.ResponseUserDto;
 import com.c823.consorcio.auth.exception.ParamNotFound;
 import com.c823.consorcio.enums.TypeTransaction;
+import com.c823.consorcio.mapper.AccountMap;
 import com.c823.consorcio.repository.IApartmentRepository;
 import com.c823.consorcio.repository.ITransactionRepository;
 import com.c823.consorcio.repository.IUserRepository;
@@ -32,6 +34,9 @@ public class AccountServiceImpl implements IAccountService {
   IApartmentRepository iApartmentRepository;
   @Autowired
   ITransactionRepository iTransactionRepository;
+  @Autowired
+  private AccountMap accountMap;
+
   @Override
   public String addAccount(ApartmentEntity apartment, String email) {
 
@@ -117,6 +122,16 @@ public class AccountServiceImpl implements IAccountService {
 
     iaccountRepository.save(accountEntity);
 
+  }
+
+  @Override
+  public List<AccountDto> finAllByUser(Long userId) {
+    UserEntity entity = userRepository.findById(userId).orElseThrow(
+        ()-> new ParamNotFound("User Id invalid"));
+    List<AccountEntity> accounts = iaccountRepository.findAllByUser(entity);
+    List<AccountDto> accountDtoList = this.accountMap.accountEntityList2DtoList(accounts);
+
+    return accountDtoList;
   }
 
 

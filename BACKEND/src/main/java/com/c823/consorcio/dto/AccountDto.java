@@ -3,6 +3,7 @@ package com.c823.consorcio.dto;
 import com.c823.consorcio.entity.ApartmentEntity;
 import com.c823.consorcio.entity.UserEntity;
 import java.util.Date;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,5 +17,6 @@ public class AccountDto {
   private Date updateDate;
   private UserEntity user;
   private ApartmentEntity apartment;
+
 
 }
