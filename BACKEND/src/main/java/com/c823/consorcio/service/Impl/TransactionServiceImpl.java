@@ -1,7 +1,10 @@
 package com.c823.consorcio.service.Impl;
 
 import com.c823.consorcio.auth.exception.ParamNotFound;
+import com.c823.consorcio.dto.AccountBasicDto;
+import com.c823.consorcio.dto.AccountTransactionDto;
 import com.c823.consorcio.dto.BillPaymentDto;
+import com.c823.consorcio.dto.TransactionBasicDto;
 import com.c823.consorcio.dto.TransactionDto;
 import com.c823.consorcio.entity.AccountEntity;
 import com.c823.consorcio.entity.TransactionEntity;
@@ -13,7 +16,10 @@ import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.repository.IaccountRepository;
 import com.c823.consorcio.service.IAccountService;
 import com.c823.consorcio.service.ITransactionService;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -127,5 +133,24 @@ public class TransactionServiceImpl implements ITransactionService {
 
     return transactionDto;
 
+  }
+
+  @Override
+  public List<TransactionBasicDto> userBasicTransactions() {
+    String email = SecurityContextHolder.getContext().getAuthentication().getName();
+    UserEntity user = userRepository.findByEmail(email);
+    Long userId = user.getUserId();
+    List<TransactionEntity> transactionsList = this.iTransactionRepository.findAllByUserEntity(user);
+    List<TransactionBasicDto> transactions = this.transactionMap.transactionEntityList2BasicDtoList(transactionsList);
+
+    return transactions;
+  }
+
+  @Override
+  public TransactionDto getDetails(Long id) {
+    TransactionEntity transactionDetail = iTransactionRepository.findById(id).orElseThrow(
+        ()-> new ParamNotFound("Id do not exist"));
+    TransactionDto transactionDto = transactionMap.transactionEntity2Dto(transactionDetail);
+    return transactionDto;
   }
 }
