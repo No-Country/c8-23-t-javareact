@@ -1,7 +1,5 @@
 package com.c823.consorcio.auth.service;
 import com.c823.consorcio.auth.dto.UserAuthDto;
-import com.c823.consorcio.entity.AccountEntity;
-import com.c823.consorcio.auth.exception.ParamNotFound;
 import com.c823.consorcio.entity.ApartmentEntity;
 import com.c823.consorcio.entity.RoleEntity;
 import com.c823.consorcio.entity.UserEntity;
@@ -15,9 +13,8 @@ import com.c823.consorcio.repository.IApartmentRepository;
 import com.c823.consorcio.repository.IRoleRepository;
 import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.service.IAccountService;
+
 import com.c823.consorcio.service.IApartmentService;
-import java.util.List;
-import com.c823.consorcio.service.IapartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -57,7 +54,7 @@ public class UserDetailsCustomService implements UserDetailsService {
 
   public ResponseUserDto save(ResponseUserDto userDto) throws RepeatedUsername {
     if (iApartmentRepository.findByApartmentNumber(userDto.getApartmentNumber()) != null){
-      throw new RepeatedUsername("Repeted Department Number");
+      throw new RepeatedUsername("Repeted Apartment Number");
     }
     UserEntity entity = this.userMap.userAuthDto2Entity(userDto);
 
