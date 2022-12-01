@@ -145,4 +145,12 @@ public class TransactionServiceImpl implements ITransactionService {
 
     return transactions;
   }
+
+  @Override
+  public TransactionDto getDetails(Long id) {
+    TransactionEntity transactionDetail = iTransactionRepository.findById(id).orElseThrow(
+        ()-> new ParamNotFound("Id do not exist"));
+    TransactionDto transactionDto = transactionMap.transactionEntity2Dto(transactionDetail);
+    return transactionDto;
+  }
 }

@@ -16,4 +16,7 @@ public interface ITransactionRepository extends JpaRepository<TransactionEntity,
 
 
   List<TransactionEntity> findAllByUserEntity(UserEntity user);
+
+
+  Long findByAccountId(UserEntity userEntity);
 }

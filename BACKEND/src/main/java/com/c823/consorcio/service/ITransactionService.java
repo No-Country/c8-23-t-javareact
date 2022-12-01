@@ -15,4 +15,6 @@ public interface ITransactionService {
   TransactionDto sendPayment(BillPaymentDto billPaymentDto);
 
   List<TransactionBasicDto> userBasicTransactions();
+
+  TransactionDto getDetails(Long id);
 }
