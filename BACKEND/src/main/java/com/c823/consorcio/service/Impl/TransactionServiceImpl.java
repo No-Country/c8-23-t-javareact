@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -149,7 +150,13 @@ public class TransactionServiceImpl implements ITransactionService {
   @Override
   public TransactionDto getDetails(Long id) {
     TransactionEntity transactionDetail = iTransactionRepository.findById(id).orElseThrow(
-        ()-> new ParamNotFound("Id do not exist"));
+        ()-> new ParamNotFound("Transaction Id do not exist"));
+    String email = SecurityContextHolder.getContext().getAuthentication().getName();
+    UserEntity user = userRepository.findByEmail(email);
+    if (!Objects.equals(user.getUserId(), transactionDetail.getUserEntity().getUserId())) {
+      throw new ParamNotFound("the Transaction id don't below to user");
+    }
+
     TransactionDto transactionDto = transactionMap.transactionEntity2Dto(transactionDetail);
     return transactionDto;
   }
