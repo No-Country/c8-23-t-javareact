@@ -1,0 +1,5 @@
+export { default as swim } from './swimming-svgrepo-com.svg'
+export { default as grill } from './grill-svgrepo-com.svg'
+export { default as dumbbell } from './dumbbell-svgrepo-com.svg'
+export { default as tennis } from './tennis-racket-and-ball-svgrepo-com.svg'
+export { default as yoga } from './yoga-posture-svgrepo-com.svg'

@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@reduxjs/toolkit': ^1.9.0
   '@savvywombat/tailwindcss-grid-areas': ^3.0.0
+  '@shrutibalasa/tailwind-grid-auto-fit': ^1.1.0
   '@types/react': ^18.0.24
   '@types/react-dom': ^18.0.8
   '@vitejs/plugin-react': ^2.2.0
@@ -34,6 +35,7 @@ dependencies:
 
 devDependencies:
   '@savvywombat/tailwindcss-grid-areas': 3.0.0_tailwindcss@3.2.4
+  '@shrutibalasa/tailwind-grid-auto-fit': 1.1.0
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.8
   '@vitejs/plugin-react': 2.2.0_vite@3.2.3
@@ -431,6 +433,10 @@ packages:
     dependencies:
       lodash: 4.17.21
       tailwindcss: 3.2.4_postcss@8.4.19
+    dev: true
+
+  /@shrutibalasa/tailwind-grid-auto-fit/1.1.0:
+    resolution: {integrity: sha512-sh/Vmdz/xTVziUF9ZYDb5YpECApdK85KXSRIJY58GzmdUuum5QBE3jqDeNMjICEVaVOSrOnp+gqUWx8A9dmZjA==}
     dev: true
 
   /@types/hoist-non-react-statics/3.3.1:

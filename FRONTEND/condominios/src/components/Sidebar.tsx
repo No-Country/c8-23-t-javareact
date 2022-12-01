@@ -18,12 +18,18 @@ export default function Sidebar() {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const openMenu = () => {
     setMenuIsOpen(!menuIsOpen)
-
+    if (!menuIsOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'scroll'
+    }
   }
+
+
   return (
-    <div>
-      <div className='bg-red-400 shadow-[0_0_0_100vmax_rgba(248,113,113,1)] clip-path'>
-        <div className=' w-full flex justify-between py-2'>
+    <div className='text-black-navbar'>
+      <div className='bg-white shadow-[0_0_0_100vmax_rgba(255,255,255,1)] clip-path'>
+        <div className=' w-full flex justify-between flex-row-reverse py-2'>
           <h2 className="flex flex-row gap-4 text-center uppercase font-bold tracking-[4px] items-center">
             <RiBuilding4Line className='text-[2.5rem]' />
             liveto
@@ -31,12 +37,12 @@ export default function Sidebar() {
           <button onClick={openMenu} className='bg-blue-400'><RiHome3Line className='text-[2.5rem]' /></button>
         </div>
       </div >
-      <nav>
-        <ul className={` w-full flex fixed h-screen items-center flex-col gap-y-11 py-12 overflow-auto list-none ${menuIsOpen ? 'left-full  ease-in-out duration-500' : 'left-0  ease-in-out duration-500'} `}>
+      <nav className={`bg-white w-full flex fixed h-[calc(100vh-56px)] flex-col justify-between overflow-auto list-none py-5  ${menuIsOpen ? 'right-0 ease-in-out duration-500' : 'right-full  ease-in-out duration-500'} `}>
+        <ul className=' h-4/6 w-full flex flex-col items-center gap-y-8 pt-8'>
           <li>
             <Link
               to='/'
-              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors text-2xl"
+              className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl " onClick={openMenu}
             >
               <RiDashboardLine className='text-[2rem]' />
               Escritorio
@@ -45,7 +51,7 @@ export default function Sidebar() {
           <li>
             <Link
               to="/expenses"
-              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors text-2xl"
+              className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
             >
               <RiWallet2Line className='text-[2rem]' />
               Gastos y expensas
@@ -54,7 +60,7 @@ export default function Sidebar() {
           <li>
             <Link
               to="/amenities"
-              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors text-2xl"
+              className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
             >
               <RiCommunityFill className='text-[2rem]' />
               Espacios comunes
@@ -63,7 +69,7 @@ export default function Sidebar() {
           <li>
             <Link
               to="/message"
-              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors text-2xl"
+              className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
             >
               <RiMessage3Line className='text-[2rem]' />
               Mensajes
@@ -72,24 +78,24 @@ export default function Sidebar() {
           <li>
             <Link
               to="/request"
-              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors text-2xl"
+              className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
             >
               <RiAlertFill className='text-[2rem]' />
               Reportes
             </Link>
           </li>
-          <div>
-            <Link
-              to="/login"
-              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors text-2xl bg-yellow-600"
-            >
-              <RiLogoutBoxLine className='text-[2rem]' />
-              Salir de cuenta
-            </Link>
-          </div>
         </ul>
+        <div>
+          <Link
+            to="/login"
+            className="flex justify-center items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
+          >
+            <RiLogoutBoxLine className='text-[2rem]' />
+            Salir de cuenta
+          </Link>
+        </div>
       </nav>
-    </div>
+    </div >
 
 
   )
