@@ -3,6 +3,7 @@ package com.c823.consorcio.mapper;
 import com.c823.consorcio.dto.AccountBasicDto;
 import com.c823.consorcio.dto.AccountDto;
 import com.c823.consorcio.entity.AccountEntity;
+import com.c823.consorcio.entity.ApartmentEntity;
 import com.c823.consorcio.repository.ITransactionRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,21 +16,29 @@ public class AccountMap {
   private ITransactionRepository iTransactionRepository;
   @Autowired
   private TransactionMap transactionMap;
+  @Autowired
+  private ApartmentMap apartmentMap;
 
-  public List<AccountDto> accountEntityList2DtoList(List<AccountEntity> accounts) {
-    List<AccountDto> accountDtos = new ArrayList<>();
-    AccountDto accountDto;
-    for (AccountEntity account : accounts){
-      accountDto = new AccountDto();
-      accountDto.setAccountId(account.getAccountId());
-      accountDto.setBalance(account.getBalance());
-      accountDto.setCreationDate(account.getCreationDate());
-      accountDto.setUpdateDate(account.getUpdateDate());
-      //accountDto.setApartment(account.getApartment());
+  public List<AccountDto> accountEntityList2DtoList(List<AccountEntity> entities) {
+    List<AccountDto> accounts = new ArrayList<>();
 
-      accountDtos.add(accountDto);
+    for (AccountEntity entity : entities){
+
+      accounts.add(accountEntity2Dto(entity));
     }
-    return accountDtos;
+    return accounts;
+  }
+
+  private AccountDto accountEntity2Dto(AccountEntity entity) {
+    AccountDto account = new AccountDto();
+    account.setAccountId(entity.getAccountId());
+    account.setUpdateDate(entity.getUpdateDate());
+    account.setBalance(entity.getBalance());
+    account.setCreationDate(entity.getCreationDate());
+    //account.setApartment(
+      //  (ApartmentEntity) apartmentMap.apartmentEntityList2DtoList(entity.getUser().getApartments()));
+
+   return account;
   }
 
   public List<AccountBasicDto> accountEntityList2BasicDto(List<AccountEntity> entities) {
