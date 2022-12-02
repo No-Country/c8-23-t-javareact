@@ -23,6 +23,7 @@ public class AmenitieEntity {
     @ManyToMany
     private List<UserEntity> users = new ArrayList<>();
 
-
+    public AmenitieEntity(){
+    }
 
 }

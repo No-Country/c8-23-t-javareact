@@ -34,6 +34,7 @@ public class ReservationEntity {
     @JoinColumn(name = "USER_ID")
     private UserEntity userEntity;
 
+    private boolean deleted = Boolean.FALSE;
 
 
 }

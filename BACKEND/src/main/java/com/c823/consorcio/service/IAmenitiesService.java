@@ -9,4 +9,6 @@ public interface IAmenitiesService {
   ReservationDto saveReservation(ReservationDto reservationDto);
 
   List<ReservationBasicDto> getReservations();
+
+  ReservationDto getDetailsById(Long reservationId);
 }

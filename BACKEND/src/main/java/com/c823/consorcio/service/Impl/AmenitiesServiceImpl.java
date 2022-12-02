@@ -49,4 +49,17 @@ public class AmenitiesServiceImpl implements IAmenitiesService {
 
     return amenitiesMap.amenitieEntityList2DtoList(iAmenitieRepository.findAll());
   }
+
+  @Override
+  public ReservationDto getDetailsById(Long reservationId) {
+    ReservationEntity reservation = iAmenitieRepository.findById(reservationId).orElseThrow(
+        ()-> new ParamNotFound("ID do not exist"));
+    String email = SecurityContextHolder.getContext().getAuthentication().getName();
+    UserEntity user = userRepository.findByEmail(email);
+    if(!Objects.equals(user.getUserId(),reservation.getUserEntity().getUserId())){
+      throw new ParamNotFound("the Reservation id don't below to user");
+    }
+    ReservationDto result = amenitiesMap.amenitieEntity2Dto(reservation);
+    return result;
+  }
 }
