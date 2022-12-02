@@ -1,6 +1,7 @@
 package com.c823.consorcio.service.Impl;
 
 import com.c823.consorcio.auth.exception.ParamNotFound;
+import com.c823.consorcio.dto.ReservationBasicDto;
 import com.c823.consorcio.dto.ReservationDto;
 import com.c823.consorcio.entity.ReservationEntity;
 import com.c823.consorcio.entity.UserEntity;
@@ -41,5 +42,11 @@ public class AmenitiesServiceImpl implements IAmenitiesService {
     ReservationDto result = amenitiesMap.amenitieEntity2Dto(entitySaved);
 
     return result;
+  }
+
+  @Override
+  public List<ReservationBasicDto> getReservations() {
+
+    return amenitiesMap.amenitieEntityList2DtoList(iAmenitieRepository.findAll());
   }
 }

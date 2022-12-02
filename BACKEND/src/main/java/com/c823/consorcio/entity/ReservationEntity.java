@@ -14,21 +14,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "AMENITIES_RESERVATIONS")
 public class ReservationEntity {
+
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "AMENITY_ID")
-    private Long amenityId;
+    private Long reservationId;
 
     @Column(name = "NAME")
     private Amenities name;
 
-    @Column(name= "RESERVATION_DATE")
+    @Column(name = "RESERVATION_DATE")
     @DateTimeFormat(pattern = "yyyy/mm/dd")
     private LocalDate reservationDate;
-
-    ////@ManyToOne
-    //@JoinColumn(name = "TURN_ID")
-    //private TurnEntity turn;
 
     @Column(name = "TURN_ID")
     private Turn turn;
@@ -36,13 +33,6 @@ public class ReservationEntity {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     private UserEntity userEntity;
-
-    private boolean deleted = Boolean.FALSE;
-
-
-
-    public ReservationEntity() {
-    }
 
 
 

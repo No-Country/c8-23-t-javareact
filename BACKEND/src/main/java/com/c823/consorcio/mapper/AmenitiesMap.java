@@ -1,10 +1,13 @@
 package com.c823.consorcio.mapper;
 
+import com.c823.consorcio.dto.ReservationBasicDto;
 import com.c823.consorcio.dto.ReservationDto;
 import com.c823.consorcio.entity.ReservationEntity;
 import com.c823.consorcio.repository.IUserRepository;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +27,7 @@ public class AmenitiesMap {
 
   public ReservationDto amenitieEntity2Dto(ReservationEntity entitySaved) {
     ReservationDto dto = new ReservationDto();
-    dto.setReservationId(entitySaved.getAmenityId());
+    dto.setReservationId(entitySaved.getReservationId());
     dto.setName(entitySaved.getName());
     dto.setTur(entitySaved.getTurn());
     dto.setReservationDate(entitySaved.getReservationDate());
@@ -40,4 +43,20 @@ public class AmenitiesMap {
     return date;
   }
 
+  public List<ReservationBasicDto> amenitieEntityList2DtoList(List<ReservationEntity> entities) {
+    List<ReservationBasicDto> dtos = new ArrayList<>();
+    for (ReservationEntity entity : entities){
+      dtos.add(amenitieEntity2DtoBasic(entity));
+    }
+    return dtos;
+  }
+
+  private ReservationBasicDto amenitieEntity2DtoBasic(ReservationEntity entitySaved) {
+    ReservationBasicDto dto = new ReservationBasicDto();
+    dto.setReservationId(entitySaved.getReservationId());
+    dto.setName(entitySaved.getName());
+    dto.setTunr(entitySaved.getTurn());
+    dto.setReservationDate(entitySaved.getReservationDate());
+    return dto;
+  }
 }
