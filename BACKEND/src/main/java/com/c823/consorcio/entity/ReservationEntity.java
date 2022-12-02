@@ -1,31 +1,40 @@
 package com.c823.consorcio.entity;
 
+import com.c823.consorcio.enums.Amenities;
 import com.c823.consorcio.enums.Turn;
+import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
+@Table(name = "AMENITIES_RESERVATIONS")
 public class ReservationEntity {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    private Long id;
-    private Date reservationDate;
-    @Enumerated (EnumType.STRING)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "AMENITY_ID")
+    private Long reservationId;
+
+    @Column(name = "NAME")
+    private Amenities name;
+
+    @Column(name = "RESERVATION_DATE")
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    private LocalDate reservationDate;
+
+    @Column(name = "TURN_ID")
     private Turn turn;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ID")
+    private UserEntity userEntity;
 
-    public ReservationEntity(){
-    }
-    public ReservationEntity(Date reservationDate, Turn turn) {
-        this.reservationDate = reservationDate;
-        this.turn = turn;
-    }
+    private boolean deleted = Boolean.FALSE;
+
+
 }
