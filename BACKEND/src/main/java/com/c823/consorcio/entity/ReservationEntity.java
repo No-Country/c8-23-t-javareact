@@ -26,12 +26,18 @@ public class ReservationEntity {
     @DateTimeFormat(pattern = "yyyy/mm/dd")
     private LocalDate reservationDate;
 
-    @Column(name = "TURN")
+    ////@ManyToOne
+    //@JoinColumn(name = "TURN_ID")
+    //private TurnEntity turn;
+
+    @Column(name = "TURN_ID")
     private Turn turn;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     private UserEntity userEntity;
+
+    private boolean deleted = Boolean.FALSE;
 
 
 
