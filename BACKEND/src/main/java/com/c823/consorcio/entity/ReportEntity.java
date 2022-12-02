@@ -20,7 +20,7 @@ public class ReportEntity {
     private Long reportId;
     @GeneratedValue (strategy= GenerationType.AUTO)
     @Column (name= "TICKET_NUMBER")
-    private int ticketNo;
+    private Long ticketNo;
     @Column (name= "CREATION_DATE")
     private LocalDate creationDate;
     @Enumerated (EnumType.STRING)
