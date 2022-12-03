@@ -1,5 +1,6 @@
 package com.c823.consorcio.service.Impl;
 
+import com.c823.consorcio.dto.ReportBasicDto;
 import com.c823.consorcio.dto.ReportDTO;
 import com.c823.consorcio.entity.ReportEntity;
 import com.c823.consorcio.entity.UserEntity;
@@ -36,4 +37,11 @@ public class ReportServiceImpl implements IReportService {
 
     return result;
   }
+
+  @Override
+  public List<ReportBasicDto> getListReports() {
+
+    return reportMap.reportEntityList2DtoBasicList(reportRepository.findAll());
+  }
+
 }

@@ -1,5 +1,6 @@
 package com.c823.consorcio.controller;
 
+import com.c823.consorcio.dto.ReportBasicDto;
 import com.c823.consorcio.enums.Issue;
 import com.c823.consorcio.service.IReportService;
 import org.apache.commons.lang3.EnumUtils;
@@ -25,6 +26,12 @@ public class ReportController {
     public ResponseEntity<ReportDTO> createReport(@RequestBody ReportDTO reportDTO){
         ReportDTO report = this.reportService.saveReport(reportDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(report);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<ReportBasicDto>> getReports(){
+        List<ReportBasicDto> listReports = this.reportService.getListReports();
+        return ResponseEntity.ok().body(listReports);
     }
 
 
