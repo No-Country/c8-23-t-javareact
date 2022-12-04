@@ -8,8 +8,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
+
 public class AmenitieEntity {
 
     @Id
@@ -23,7 +25,6 @@ public class AmenitieEntity {
     @ManyToMany
     private List<UserEntity> users = new ArrayList<>();
 
-    public AmenitieEntity(){
-    }
+
 
 }

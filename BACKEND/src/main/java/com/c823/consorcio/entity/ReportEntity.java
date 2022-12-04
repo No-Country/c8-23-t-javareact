@@ -10,22 +10,26 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Date;
+import org.hibernate.annotations.CreationTimestamp;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
+@Table(name = "REPORTS")
 public class ReportEntity {
 
     @Id
     @GeneratedValue (strategy= GenerationType.IDENTITY)
     private Long reportId;
-    @GeneratedValue (strategy= GenerationType.AUTO)
-    @Column (name= "TICKET_NUMBER")
-    private Long ticketNo;
+
+    @CreationTimestamp
     @Column (name= "CREATION_DATE")
     private LocalDate creationDate;
+
     @Enumerated (EnumType.STRING)
     @Column (name= "ISSUE")
     private Issue issue;
+
     @Enumerated (EnumType.STRING)
     @Column (name= "STATUS")
     private Status status;
@@ -42,16 +46,5 @@ public class ReportEntity {
     @JoinColumn(name= "user_id", nullable = false)
     private UserEntity user;
 
-    public ReportEntity() {
-    }
-
-    public ReportEntity(LocalDate creationDate, Issue issue, Status status, String detail, String place, UserEntity user) {
-        this.creationDate = creationDate;
-        this.issue = issue;
-        this.detail = detail;
-        this.place = place;
-        this.status = status;
-        this.user = user;
-    }
 
 }

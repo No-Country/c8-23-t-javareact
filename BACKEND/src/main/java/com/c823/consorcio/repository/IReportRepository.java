@@ -8,6 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface IReportRepository extends JpaRepository< ReportEntity, Long> {
-    public Optional<ReportEntity> findByTicketNo(int TicketNo);
-    public boolean existsByTicketNo(int TicketNo);
+
 }

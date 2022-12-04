@@ -1,9 +1,15 @@
 package com.c823.consorcio.service.Impl;
 
+import com.c823.consorcio.dto.ReportBasicDto;
+import com.c823.consorcio.dto.ReportDTO;
 import com.c823.consorcio.entity.ReportEntity;
+import com.c823.consorcio.entity.UserEntity;
+import com.c823.consorcio.mapper.ReportMap;
 import com.c823.consorcio.repository.IReportRepository;
+import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.service.IReportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -11,43 +17,31 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class ReportServiceImpl implements IReportService {
     @Autowired
-    IReportRepository reportRepository;
+     private IReportRepository reportRepository;
+    @Autowired
+    private ReportMap reportMap;
+    @Autowired
+    private IUserRepository userRepository;
 
-    @Override
-    public List<ReportEntity> getReportList() {
-        return reportRepository.findAll();
-    }
 
-    @Override
-    public void saveReport(ReportEntity report) {
-        reportRepository.save(report);
-    }
+  @Override
+  public ReportDTO saveReport(ReportDTO reportDTO) {
+    String email = SecurityContextHolder.getContext().getAuthentication().getName();
+    UserEntity user = userRepository.findByEmail(email);
+    Long userId = user.getUserId();
+    ReportEntity reportEntity = reportMap.reportDto2Entity(reportDTO,userId);
+    ReportEntity entitySaved = reportRepository.save(reportEntity);
+    ReportDTO result = reportMap.reportEntity2Dto(entitySaved);
 
-    @Override
-    public void deleteReport(Long reportId) {
-        reportRepository.deleteById(reportId);
-    }
+    return result;
+  }
 
-    @Override
-    public Optional<ReportEntity> findReportById(Long reportId) {
-        return reportRepository.findById(reportId);
-    }
+  @Override
+  public List<ReportBasicDto> getListReports() {
 
-    @Override
-    public Optional<ReportEntity> findReportByTicketNo(int ticketNo) {
-        return reportRepository.findByTicketNo(ticketNo);
-    }
+    return reportMap.reportEntityList2DtoBasicList(reportRepository.findAll());
+  }
 
-    @Override
-    public boolean existsById(Long reportId) {
-        return reportRepository.existsById(reportId);
-    }
-
-    @Override
-    public boolean existsByTicketNo(int ticketNo) {
-        return reportRepository.existsByTicketNo(ticketNo);
-    }
 }
