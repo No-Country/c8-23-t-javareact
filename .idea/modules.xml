@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/c8-23-t-javareact.iml" filepath="$PROJECT_DIR$/.idea/c8-23-t-javareact.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BACKEND/consorcio.iml" filepath="$PROJECT_DIR$/BACKEND/consorcio.iml" />
+    </modules>
+  </component>
+</project>
