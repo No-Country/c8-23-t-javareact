@@ -2,9 +2,9 @@
 import { swim, dumbbell, grill, tennis, yoga } from '../../assets/amenitiesIcons/index'
 export default function AmenitiesInfo() {
     return (
-        <div>
+        <div className='1048:px-36'>
 
-            <div className='bg-white rounded-md py-4 px-6'>
+            <div className='bg-white rounded-2xl py-4 px-6'>
                 <h2 className='mb-3 font-semibold text-2xl'>Espacios comunes</h2>
                 <div className=' flex max-w-screen items-center gap-8 justify-between overflow-x-scroll py-5'>
                     <div className='bg-background-swimming min-w-[6rem] h-28 flex flex-col justify-center items-center rounded-md p-5'>
@@ -41,7 +41,7 @@ export default function AmenitiesInfo() {
                 </div>
 
             </div>
-            <div className='mt-6 bg-white rounded-md py-4 px-6'>
+            <div className='mt-6 bg-white rounded-2xl py-4 px-6'>
                 <h2 className='font-semibold text-2xl'>Mis reservas</h2>
             </div>
         </div>

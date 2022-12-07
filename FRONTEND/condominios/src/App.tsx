@@ -6,23 +6,26 @@ import { useAppDispatch, useAppSelector } from './reduxHooks/reduxHooks';
 import { increment } from './store/slices/counter.slice';
 import ExpensesHistory from './pages/expenses/ExpensesHistory';
 import AmenitiesInfo from './pages/amenities/AmenitiesInfo';
+import MessageHistory from './pages/message/MessageHistory';
 
 
 
 function App() {
-
+  // 450:px-12 sm:px-24
   return (
     <HashRouter>
-      <div className="px-6 font-Poppins">
+      {/* px-6 */}
+      <div className="font-Poppins px-6 450:px-12 sm:px-[20%] 1048:px-0 1048:grid 1048:grid-cols-5">
         <Sidebar />
-        <div className='flex flex-col pb-8'>
+        {/* pb-8 */}
+        <div className='flex flex-col  pb-8 1048:col-span-4'>
           <UserInfo />
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/request' element={<Request />} />
             <Route path='/expenses' element={<ExpensesHistory />} />
             <Route path='/amenities' element={<AmenitiesInfo />} />
-            <Route path='/message' element={<Message />} />
+            <Route path='/message' element={<MessageHistory />} />
             <Route path='/login' element={<Login />} />
           </Routes>
         </div>

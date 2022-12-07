@@ -14,5 +14,6 @@ export default function Message() {
             </div>
             <span className="mt-4 block text-center font-normal text-medium2-blue text-sm">Ver todo</span>
         </div>
+
     )
 }

@@ -14,8 +14,8 @@ function Request() {
   const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
   // console.log(errors);
   return (
-    <div className=" flex flex-col gap-y-4">
-      <div className="bg-white rounded-md px-2">
+    <div className=" flex flex-col gap-y-4 1048:grid 1048:grid-cols-2 1048:gap-x-6 1048:p-6">
+      <div className="bg-white  px-2 rounded-2xl">
         <h2 className='font-semibold text-2xl my-6'>Realizar un reporte</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='mb-6'>
@@ -44,12 +44,12 @@ function Request() {
           </div>
         </form>
       </div>
-      <div className="px-2 bg-white rounded-md">
+      <div className="px-2 bg-white rounded-2xl">
         <h2 className='font-semibold text-2xl my-6'>Reportes</h2>
         <table className='w-full mb-6'>
           <thead className='bg-background-table'>
             <tr className=' text-left'>
-              <th className='font-Poppins text-sm whitespace-nowrap  sm:bg-pink-600 p-3 rounded-l-md'>Ticket No.</th>
+              <th className='font-Poppins text-sm whitespace-nowrap  p-3 rounded-l-md'>Ticket No.</th>
               <th className='font-Poppins text-sm whitespace-nowrap mx-4 hidden'>Fecha</th>
               <th className='font-Poppins text-sm whitespace-nowrap mx-4'>Asunto</th>
               <th className='font-Poppins text-sm whitespace-nowrap mx-4  rounded-r-md'>Estado</th>

@@ -35,7 +35,10 @@ module.exports = {
         'asunto-rowTable': '#1E293B',
         'reporte-textColor': '#464265',
         'reporte-borderColor': '#ACC4D8',
-
+      },
+      screens: {
+        '450': '450px',
+        '1048': '1048px',
       }
     },
     fontFamily: {

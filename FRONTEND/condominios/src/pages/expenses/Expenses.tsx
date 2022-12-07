@@ -2,7 +2,7 @@
 export default function Expenses() {
     return (
         <div>
-            <div className="bg-white py-4 px-6 flex flex-col gap-y-4 rounded-2xl border-none">
+            <div className="bg-white py-4 px-6 flex flex-col gap-y-4 rounded-2xl border-none md:h-[100%]">
                 <div>
                     <h3 className='font-semibold text-2xl'>Estado de la cuenta
                     </h3>
