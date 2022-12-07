@@ -1,10 +1,13 @@
 package com.c823.consorcio.service.Impl;
 
 
+import com.c823.consorcio.auth.dto.ResponseUserDto;
+import com.c823.consorcio.auth.exception.ParamNotFound;
 import com.c823.consorcio.dto.AccountBasicDto;
 import com.c823.consorcio.entity.AccountEntity;
 import com.c823.consorcio.entity.UserEntity;
 import com.c823.consorcio.mapper.AccountMap;
+import com.c823.consorcio.mapper.UserMap;
 import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.service.IAccountService;
 import com.c823.consorcio.service.IUserService;
@@ -22,6 +25,8 @@ public class UserServiceImpl implements IUserService {
   private IAccountService iAccountService;
   @Autowired
   private AccountMap accountMap;
+  @Autowired
+  private UserMap userMap;
 
 
   @Override
@@ -36,6 +41,15 @@ public class UserServiceImpl implements IUserService {
     }
     List<AccountBasicDto> accountsDto = this.accountMap.accountEntityList2BasicDto(accounts);
     return accountsDto;
+
+  }
+
+  @Override
+  public ResponseUserDto findById(Long userId) {
+    UserEntity entity = iUserRepository.findById(userId).orElseThrow(
+        () -> new ParamNotFound("User ID Invalid"));
+    ResponseUserDto dto = userMap.userAuthEntity2Dto(entity);
+    return dto;
 
   }
 }
