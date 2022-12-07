@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/reservations")
+
 public class AmenitiesController {
   @Autowired
   private IAmenitiesService amenitiesService;
@@ -36,8 +37,9 @@ public class AmenitiesController {
   public ResponseEntity<ReservationDto> getDetailsReservation(@PathVariable Long reservationId){
     ReservationDto reservation = this.amenitiesService.getDetailsById(reservationId);
     return ResponseEntity.ok().body(reservation);
-
   }
+  //TODO : Resta lista de reservas del usuario autenticado (GET/RESERVATIONS)
+  //TODO: resta lista de reservas del usuario visto desde el administrador (GET/RESERVATIONS/USER_ID)
 
 
 }

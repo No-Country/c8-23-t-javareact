@@ -60,6 +60,10 @@ public class UserEntity implements Serializable {
         accounts.add(account);
     }
 
+    @OneToMany(mappedBy = "user")
+    private List<MessageEntity> messages = new ArrayList<>();
+
+
 
 
 

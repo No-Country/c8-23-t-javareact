@@ -1,0 +1,26 @@
+package com.c823.consorcio.service.Impl;
+
+import com.c823.consorcio.dto.MessageDto;
+import com.c823.consorcio.entity.MessageEntity;
+import com.c823.consorcio.mapper.MessageMap;
+import com.c823.consorcio.repository.IMessageRepository;
+import com.c823.consorcio.service.MessageService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MessageServiceImpl implements MessageService {
+
+  @Autowired
+  private MessageMap messageMap;
+  @Autowired
+  private IMessageRepository messageRepository;
+
+  @Override
+  public MessageDto sendMessage(MessageDto messageDto) {
+    MessageEntity messageEntity = messageMap.messageDto2Entity(messageDto);
+    MessageEntity entitySaved = messageRepository.save(messageEntity);
+    MessageDto result = messageMap.messageEntity2Dto(entitySaved);
+    return result;
+  }
+}
