@@ -6,6 +6,7 @@ import com.c823.consorcio.entity.MessageEntity;
 import com.c823.consorcio.repository.IUserRepository;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -46,5 +47,13 @@ public class MessageMap {
     dto.setCreationDate(entiy.getCreationDate());
     dto.setSubject(entiy.getSubject());
     return dto;
+  }
+
+  public List<MessageDto> messageEntityList2DtoList(List<MessageEntity> entities) {
+    List<MessageDto> messages = new ArrayList<>();
+    for (MessageEntity entiy : entities){
+      messages.add(messageEntity2Dto(entiy));
+    }
+    return messages;
   }
 }

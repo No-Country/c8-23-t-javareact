@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,13 +27,19 @@ public class MessageController {
     return ResponseEntity.status(HttpStatus.CREATED).body(message);
   }
 
-  @GetMapping("/")
+  @GetMapping("")
   public ResponseEntity<List<MessageBasicDto>> getMessagesauth(){
     List<MessageBasicDto> messagesauth = this.messageService.getMessagesauth();
     return ResponseEntity.ok().body(messagesauth);
   }
 
-  //TODO: resta lista de MENSAJES del usuario visto desde el administrador (GET/MESSAGES/USER_ID)
+  @GetMapping("{userId}")//TODO: solo administrador
+  public ResponseEntity<List<MessageDto>> getMessagesById(@PathVariable Long userId){
+   List<MessageDto> messages = this.messageService.getDetailsById(userId);
+    return ResponseEntity.ok().body(messages);
+  }
+
+
   //TODO: resta MENSAJE por id (GET/MESSAGES/MESSAGE_ID)
 
 

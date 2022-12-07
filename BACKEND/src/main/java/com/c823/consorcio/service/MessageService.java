@@ -9,4 +9,6 @@ public interface MessageService {
   MessageDto sendMessage(MessageDto messageDto);
 
   List<MessageBasicDto> getMessagesauth();
+
+  List<MessageDto> getDetailsById(Long userId);
 }
