@@ -34,6 +34,10 @@ public class ReportController {
         return ResponseEntity.ok().body(listReports);
     }
 
+    // TODO : Resta lista de repotes de todos los usuarios (GET/REPORTS) (ADMIN)
+    // TODO: resta lista de reportes del usuario (GET/REPORTS/USER_ID) (ADMIN)
+
+
 
 
 }

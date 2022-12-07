@@ -59,4 +59,12 @@ public class MessageServiceImpl implements MessageService {
 
     return messageList;
   }
+
+  @Override
+  public MessageDto getdetails(Long message_id) {
+    MessageEntity messageEntity = messageRepository.findById(message_id).orElseThrow(
+        ()->new ParamNotFound("Invalid ID"));
+    MessageDto messageDto = messageMap.messageEntity2Dto(messageEntity);
+    return messageDto;
+  }
 }

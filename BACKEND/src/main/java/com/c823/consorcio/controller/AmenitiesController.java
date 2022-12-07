@@ -38,8 +38,8 @@ public class AmenitiesController {
     ReservationDto reservation = this.amenitiesService.getDetailsById(reservationId);
     return ResponseEntity.ok().body(reservation);
   }
-  //TODO : Resta lista de reservas del usuario autenticado (GET/RESERVATIONS)
-  //TODO: resta lista de reservas del usuario visto desde el administrador (GET/RESERVATIONS/USER_ID)
+  // TODO : Resta lista de reservas del usuario autenticado (GET/RESERVATIONS)
+  // TODO: resta lista de reservas del usuario visto desde el administrador (GET/RESERVATIONS/USER_ID)
 
 
 }

@@ -34,13 +34,15 @@ public class MessageController {
   }
 
   @GetMapping("{userId}")//TODO: solo administrador
-  public ResponseEntity<List<MessageDto>> getMessagesById(@PathVariable Long userId){
+  public ResponseEntity<List<MessageDto>> getMessagesByUserId(@PathVariable Long userId){
    List<MessageDto> messages = this.messageService.getDetailsById(userId);
     return ResponseEntity.ok().body(messages);
   }
 
-
-  //TODO: resta MENSAJE por id (GET/MESSAGES/MESSAGE_ID)
-
+  @GetMapping("messageid/{messageId}")
+  public ResponseEntity<MessageDto> getMessageById(@PathVariable Long messageId){
+    MessageDto message = this.messageService.getdetails(messageId);
+    return ResponseEntity.ok().body(message);
+  }
 
 }
