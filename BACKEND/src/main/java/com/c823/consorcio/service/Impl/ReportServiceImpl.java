@@ -41,6 +41,8 @@ public class ReportServiceImpl implements IReportService {
   @Override
   public List<ReportBasicDto> getListReports() {
 
+
+
     return reportMap.reportEntityList2DtoBasicList(reportRepository.findAll());
   }
 

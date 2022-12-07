@@ -1,5 +1,6 @@
 package com.c823.consorcio.controller;
 
+import com.c823.consorcio.dto.MessageBasicDto;
 import com.c823.consorcio.dto.MessageDto;
 import com.c823.consorcio.service.MessageService;
 import java.util.List;
@@ -25,7 +26,12 @@ public class MessageController {
     return ResponseEntity.status(HttpStatus.CREATED).body(message);
   }
 
-  //TODO : Resta lista de MENSAJES del usuario autenticado (GET/MESSAGES)
+  @GetMapping("/")
+  public ResponseEntity<List<MessageBasicDto>> getMessagesauth(){
+    List<MessageBasicDto> messagesauth = this.messageService.getMessagesauth();
+    return ResponseEntity.ok().body(messagesauth);
+  }
+
   //TODO: resta lista de MENSAJES del usuario visto desde el administrador (GET/MESSAGES/USER_ID)
   //TODO: resta MENSAJE por id (GET/MESSAGES/MESSAGE_ID)
 

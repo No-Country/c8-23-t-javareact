@@ -1,11 +1,16 @@
 package com.c823.consorcio.service.Impl;
 
+import com.c823.consorcio.dto.MessageBasicDto;
 import com.c823.consorcio.dto.MessageDto;
 import com.c823.consorcio.entity.MessageEntity;
+import com.c823.consorcio.entity.UserEntity;
 import com.c823.consorcio.mapper.MessageMap;
 import com.c823.consorcio.repository.IMessageRepository;
+import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.service.MessageService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,6 +20,8 @@ public class MessageServiceImpl implements MessageService {
   private MessageMap messageMap;
   @Autowired
   private IMessageRepository messageRepository;
+  @Autowired
+  private IUserRepository userRepository;
 
   @Override
   public MessageDto sendMessage(MessageDto messageDto) {
@@ -22,5 +29,16 @@ public class MessageServiceImpl implements MessageService {
     MessageEntity entitySaved = messageRepository.save(messageEntity);
     MessageDto result = messageMap.messageEntity2Dto(entitySaved);
     return result;
+  }
+
+  @Override
+  public List<MessageBasicDto> getMessagesauth() {
+    String email = SecurityContextHolder.getContext().getAuthentication().getName();
+    UserEntity user = userRepository.findByEmail(email);
+    Long userId = user.getUserId();
+    List<MessageEntity> messageEntityList = messageRepository.findAllByUser(user);
+    List<MessageBasicDto> messagesList = messageMap.messageEntityList2BasicDtoList(messageEntityList);
+
+    return messagesList;
   }
 }
