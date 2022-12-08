@@ -45,13 +45,13 @@ export default function Sidebar() {
           </h2>
           <button onClick={openMenu} className='bg-blue-400 1048:hidden '><RiHome3Line className='text-[2.5rem]' /></button>
         </div>
-        <ul className=' h-4/6 flex items-center flex-col gap-8 py-8 px-4 1048:items-start'>
+        <ul className=' h-4/6 flex items-center flex-col gap-8 py-8 px-4 justify-between 1048:items-start'>
           <li>
-            <Link className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl"
+            <Link className="flex items-center font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl"
               to='/'
               onClick={openMenu}
             >
-              <RiDashboardLine className='text-[2rem]' />
+              <RiDashboardLine className='mx-6 text-[2rem]' />
               <p>Escritorio</p>
             </Link>
           </li>
@@ -60,7 +60,7 @@ export default function Sidebar() {
               to="/expenses"
               className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
             >
-              <RiWallet2Line className='text-[2rem] ' />
+              <RiWallet2Line className='mx-6 text-[2rem] ' />
               Gastos y expensas
             </Link>
           </li>
@@ -69,7 +69,7 @@ export default function Sidebar() {
               to="/amenities"
               className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
             >
-              <RiCommunityFill className='text-[2rem]' />
+              <RiCommunityFill className='mx-6 text-[2rem]' />
               Espacios comunes
             </Link>
           </li>
@@ -78,7 +78,7 @@ export default function Sidebar() {
               to="/message"
               className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
             >
-              <RiMessage3Line className='text-[2rem]' />
+              <RiMessage3Line className='mx-6 text-[2rem]' />
               Mensajes
             </Link>
           </li>
@@ -87,7 +87,7 @@ export default function Sidebar() {
               to="/request"
               className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
             >
-              <RiAlertFill className='text-[2rem]' />
+              <RiAlertFill className='mx-6 text-[2rem]' />
               Reportes
             </Link>
           </li>
@@ -97,7 +97,7 @@ export default function Sidebar() {
             to="/login"
             className="flex justify-center items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl px-4 1048:justify-start" onClick={openMenu}
           >
-            <RiLogoutBoxLine className='text-[2rem]' />
+            <RiLogoutBoxLine className='mx-6 text-[2rem]' />
             Salir de cuenta
           </Link>
         </div>
