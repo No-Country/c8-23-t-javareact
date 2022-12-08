@@ -7,6 +7,8 @@ import { increment } from './store/slices/counter.slice';
 import ExpensesHistory from './pages/expenses/ExpensesHistory';
 import AmenitiesInfo from './pages/amenities/AmenitiesInfo';
 import MessageHistory from './pages/message/MessageHistory';
+import MenuLogin from './pages/login/MenuLogin';
+import NewUser from './pages/login/NewUser';
 
 
 
@@ -21,12 +23,12 @@ function App() {
         <div className='flex flex-col  pb-8 1048:col-span-4'>
           <UserInfo />
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Login />} />
             <Route path='/request' element={<Request />} />
             <Route path='/expenses' element={<ExpensesHistory />} />
             <Route path='/amenities' element={<AmenitiesInfo />} />
             <Route path='/message' element={<MessageHistory />} />
-            <Route path='/login' element={<Login />} />
+            <Route path='/home' element={<Home />} />
           </Routes>
         </div>
       </div>
