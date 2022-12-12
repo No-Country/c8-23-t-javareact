@@ -1,5 +1,5 @@
 #                                LIVETO APP 
-![](https://raw.githubusercontent.com/No-Country/c8-23-t-javareact/main/Cover_presentacion%20(2).png?token=GHSAT0AAAAAAB2I3CGZSLU4HXHEM5BELOHSY4XUMWA)
+![](https://github.com/No-Country/c8-23-t-javareact/blob/main/Cover_presentacion%20(2).png?raw=true)
 ## Building and residence management system.
 ### what is   liveto app? 🚀
 
